@@ -7,4 +7,4 @@ package com.lanxiang.icyy.dto
  * @desc:
  *
  */
-data class TestDTO(val test:String?="")
+data class TestDTO(val test:String?="sda")

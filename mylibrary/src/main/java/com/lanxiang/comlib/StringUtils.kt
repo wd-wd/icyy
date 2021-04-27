@@ -8,5 +8,5 @@ package com.lanxiang.comlib
  *
  */
 object StringUtils {
-    fun getString():String="wo"
+    fun getString():String="sdas"
 }
