@@ -1,3 +1,4 @@
+include ':netlibrary'
 include ':mylibrary'
 include ':app'
 rootProject.name = "Icyy"

@@ -1,0 +1,20 @@
+ext {
+
+    libsVersion = [
+            retrofit = '2.9.0',
+            rxjava = "2.1.1",
+            rxjava_android = "2.0.1",
+            rxjava_adapter = "2.6.1",
+            gson_converter = "2.6.1",
+            gsonVersion = "2.8.0",
+    ]
+
+    dependencies = [
+            retrofit: "com.squareup.retrofit2:retrofit:$rootProject.retrofit",
+            rxjava2                 : "io.reactivex.rxjava2:rxjava:$rootProject.rxjava",
+            rxjava2_android         : "io.reactivex.rxjava2:rxandroid:$rootProject.rxjava_android",
+            retrofit_adapter_rxjava2: "com.squareup.retrofit2:adapter-rxjava2:$rootProject.rxjava_adapter",
+            retrofit_converter_gson : "com.squareup.retrofit2:converter-gson:$rootProject.gson_converter",
+            gson                    : "com.google.code.gson:gson:$rootProject.gsonVersion",
+    ]
+}
