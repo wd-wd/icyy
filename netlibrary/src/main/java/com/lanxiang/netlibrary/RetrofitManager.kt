@@ -3,9 +3,12 @@ package com.lanxiang.netlibrary
 import com.lanxiang.comlib.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
+import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.net.URLEncoder
 import java.util.concurrent.TimeUnit
 
 /**
@@ -15,28 +18,29 @@ import java.util.concurrent.TimeUnit
  * @desc:
  *
  */
-class RetrofitManager private constructor(private val interceptor: Interceptor) {
+class RetrofitManager private constructor() {
+    private lateinit var interceptor: Interceptor
+
     companion object {
         private const val CONNECT_TIMEOUT = 20L
         private const val READ_TIMEOUT = 20L
         private const val WRITE_TIMEOUT = 20L
         const val BASE_URL = ""
 
-        @Volatile
-        var instance: RetrofitManager? = null
-        fun getInstance(interceptor: Interceptor): RetrofitManager? {
-            if (instance == null) {
-                synchronized(RetrofitManager::class) {
-                    if (instance == null) {
-                        instance = RetrofitManager(interceptor)
-                    }
-                }
-            }
-            return instance
+        val retrofitManager: RetrofitManager by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+            RetrofitManager()
         }
     }
 
-    private fun getOkHttpClient(interceptor: Interceptor): OkHttpClient {
+    /**
+     * @param interceptor
+     * @des 不使用到主项目的内容可以不用
+     */
+    fun init(interceptor: Interceptor) {
+        this.interceptor = interceptor
+    }
+
+    private fun getOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
         builder //                .cache(cache)
             .connectTimeout(
@@ -51,6 +55,32 @@ class RetrofitManager private constructor(private val interceptor: Interceptor) 
             .retryOnConnectionFailure(true)
 //            .dns(MyDNS())
             .addNetworkInterceptor(interceptor)
+            .addNetworkInterceptor(Interceptor {
+                // get token
+                val originalRequest = it.request()
+                try {
+                    val jsonObject = JSONObject()
+                    jsonObject.put("clientType", 1)
+                    //            jsonObject.put("bizChannel", "1");
+                    jsonObject.put("version", BuildConfig.VERSION_NAME)
+                } catch (e: Exception) {
+                }
+                val token: String = ""
+
+                // get new request, add request header
+
+                // get new request, add request header
+                val builder = originalRequest.newBuilder()
+                //取消长链接
+//              builder.header("Connection", "close")
+                //取消长链接
+//              builder.header("Connection", "close")
+                if (null != token && !token.isEmpty()) {
+                    builder.header("token", token)
+                }
+                val updateRequest = builder.build()
+                it.proceed(updateRequest)
+            })
         //设置http 日志拦截
         if (BuildConfig.DEBUG) {
             //使用统一日志管理
@@ -72,7 +102,7 @@ class RetrofitManager private constructor(private val interceptor: Interceptor) 
 
     fun <T> create(clazz: Class<T>): T {
         val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
-            .client(getOkHttpClient(interceptor))
+            .client(getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
