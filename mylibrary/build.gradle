@@ -40,4 +40,6 @@ dependencies {
     api rootProject.ext.dependencies.gson
     api rootProject.ext.dependencies.rxjava2
     api rootProject.ext.dependencies.rxjava2_android
+    api rootProject.ext.dependencies.kotlinx_coroutines_core
+    api rootProject.ext.dependencies.kotlinx_coroutines_android
 }
