@@ -1,6 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+//阿里路由支持kotlin跳转使用与下面一起，每个module中必须
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        //可以不改，也可以写为module名称
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 android {
     compileSdkVersion 30
@@ -42,5 +51,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    implementation rootProject.ext.dependencies.arouter_api
+    //阿里路由 compiler使用,如果不需要kotlin跳转下面的可以不用，
+    // 要支持kotlin下面的必须每个module都这样写
+    kapt rootProject.ext.dependencies.arouter_compiler
 }

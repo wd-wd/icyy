@@ -29,7 +29,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
 
     }
 
-    private fun initEven() {
+    open fun initEven() {
 
     }
 

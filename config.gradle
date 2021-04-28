@@ -8,6 +8,8 @@ ext {
             gson_converter = "2.6.1",
             gsonVersion = "2.8.0",
             kotlinx_coroutines = "1.3.0",
+            arouter_api = "1.5.0",
+            arouter_compiler = "1.2.2",
     ]
 
     dependencies = [
@@ -19,5 +21,9 @@ ext {
             gson                      : "com.google.code.gson:gson:$rootProject.gsonVersion",
             kotlinx_coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.kotlinx_coroutines",
             kotlinx_coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.kotlinx_coroutines",
+            //路由通讯
+            arouter_api             : "com.alibaba:arouter-api:$rootProject.arouter_api",
+            arouter_compiler        : "com.alibaba:arouter-compiler:$rootProject.arouter_compiler",
+
     ]
 }
