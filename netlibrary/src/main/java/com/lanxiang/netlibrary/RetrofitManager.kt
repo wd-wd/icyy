@@ -25,7 +25,7 @@ class RetrofitManager private constructor() {
         private const val CONNECT_TIMEOUT = 20L
         private const val READ_TIMEOUT = 20L
         private const val WRITE_TIMEOUT = 20L
-        const val BASE_URL = ""
+        const val BASE_URL = "http://baobab.kaiyanapp.com"
 
         val retrofitManager: RetrofitManager by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
             RetrofitManager()

@@ -17,7 +17,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<T>(this, getLayoutId())
-        intViewModel()
+        initViewModel()
         //初始化事件
         initEven()
         doDataChange()
@@ -25,7 +25,7 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
 
     abstract fun getLayoutId(): Int
 
-    open fun intViewModel() {
+    open fun initViewModel() {
 
     }
 
