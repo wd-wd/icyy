@@ -55,4 +55,10 @@ dependencies {
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     api 'androidx.lifecycle:lifecycle-process:2.2.0'
     api rootProject.ext.dependencies.arouter_api
+//JAVA
+    implementation 'androidx.navigation:navigation-fragment:2.3.0'
+    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    //KOTLIN
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 }
