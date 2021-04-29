@@ -1,7 +1,6 @@
 package com.lanxiang.icyy.api
 
-import com.lanxiang.icyy.dto.HomeRecommendDTO
-import com.lanxiang.netlibrary.BaseDTO
+import com.lanxiang.module_home.dto.HomeRecommendDTO
 import retrofit2.http.GET
 
 /**
@@ -13,5 +12,5 @@ import retrofit2.http.GET
  */
 interface HomeServer {
     @GET("/api/v5/index/tab/allRec")
-    suspend fun getRecommendList():HomeRecommendDTO
+    suspend fun getRecommendList(): HomeRecommendDTO
 }

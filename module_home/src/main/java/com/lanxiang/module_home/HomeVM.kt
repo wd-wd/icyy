@@ -1,22 +1,22 @@
-package com.lanxiang.icyy
+package com.lanxiang.module_home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lanxiang.icyy.api.HomeServer
-import com.lanxiang.icyy.dto.HomeRecommendDTO
-import com.lanxiang.netlibrary.coroutines.result
+import com.lanxiang.module_home.dto.HomeRecommendDTO
+import com.lanxiang.netlibrary.ApiServiceProvider
 import com.lanxiang.netlibrary.coroutines.safeLaunch
+import com.lanxiang.netlibrary.getApiService
 
 /**
  * @auhthor: wangdong
  * @e-mail: 690931210@qq.com
- * @date: 2021/4/28 1:47 PM
+ * @date: 2021/4/29 4:39 PM
  * @desc:
  *
  */
-class MainModel : ViewModel() {
+class HomeVM : ViewModel() {
     private val service = ApiServiceProvider.getApiService<HomeServer>()
     val homeRecommendDTO: MutableLiveData<HomeRecommendDTO> by lazy { MutableLiveData<HomeRecommendDTO>() }
     fun getList() {

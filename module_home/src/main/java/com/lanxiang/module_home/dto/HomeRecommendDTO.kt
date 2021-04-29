@@ -1,4 +1,4 @@
-package com.lanxiang.icyy.dto
+package com.lanxiang.module_home.dto
 
 /**
  * @auhthor: wangdong
@@ -10,14 +10,14 @@ package com.lanxiang.icyy.dto
 data class HomeRecommendDTO(
     val adExist: Boolean,
     val count: Int,
-    val itemList: List<Item>,
+    val itemList: MutableList<Item>,
     val nextPageUrl: String,
     val total: Int
 )
 
 data class Item(
     val adIndex: Int,
-    val `data`: Data,
+    val data: Data,
     val id: Int,
     val tag: Any,
     val trackingData: Any,
@@ -46,7 +46,7 @@ data class Data(
     val favoriteAdTrack: Any,
     val follow: Any,
     val footer: Any,
-    val header: Header,
+    val header: Header?,
     val id: Int,
     val idx: Int,
     val ifLimitVideo: Boolean,
@@ -56,7 +56,7 @@ data class Data(
     val lastViewTime: Any,
     val library: String,
     val playInfo: List<PlayInfoXX>,
-    val playUrl: String,
+    val playUrl: String?,
     val played: Boolean,
     val playlists: Any,
     val promotion: Any,
@@ -75,7 +75,7 @@ data class Data(
     val subtitles: List<Any>,
     val tags: List<TagXX>,
     val text: String,
-    val thumbPlayUrl: Any,
+    val thumbPlayUrl: String?,
     val title: String,
     val titlePgc: String,
     val type: String,
@@ -127,7 +127,7 @@ data class CoverX(
 )
 
 data class Header(
-    val actionUrl: String,
+    val actionUrl: String?,
     val cover: Any,
     val description: String,
     val font: String,

@@ -29,9 +29,14 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
+        initView()
         //初始化事件
         initEven()
         doDataChange()
+    }
+
+    open fun initView() {
+
     }
 
     open fun initViewModel() {

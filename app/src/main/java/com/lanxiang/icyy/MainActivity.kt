@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity<TestDataBinding>() {
     private val fragments: MutableList<Fragment> = ArrayList()
     private var manager: FragmentManager? = null
-    private val mainModel: MainModel by viewModels()
     override fun getLayoutId(): Int = R.layout.activity_main
     override fun initView() {
         showDefaultTab()
@@ -127,10 +126,6 @@ class MainActivity : BaseActivity<TestDataBinding>() {
     }
 
     override fun doDataChange() {
-        mainModel.getList()
-        mainModel.homeRecommendDTO.observe(this, Observer {
-//            binding.test = TestDTO(it.toString())
-        })
 
     }
 
