@@ -2,6 +2,7 @@ package com.lanxiang.icyy
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import com.lanxiang.comlib.BaseApplication
 import com.lanxiang.netlibrary.RetrofitManager
 
 /**
@@ -11,19 +12,11 @@ import com.lanxiang.netlibrary.RetrofitManager
  * @desc:
  *
  */
-class App : Application() {
-    val instance: Application by lazy {
-        this
-    }
+class App : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        //ARoute 初始化
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
+
         RetrofitManager.retrofitManager.init(MyIntercept())
     }
 }
