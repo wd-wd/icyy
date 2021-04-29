@@ -1,12 +1,9 @@
 package com.lanxiang.module_home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lanxiang.comlib.Const.Home.HOME_HOME_FRAG
+import com.lanxiang.comlib.base.BaseFragment
+import com.lanxiang.module_home.databinding.FragmentHomeBinding
 
 /**
  * @auhthor: wangdong
@@ -16,13 +13,8 @@ import com.lanxiang.comlib.Const.Home.HOME_HOME_FRAG
  *
  */
 @Route(path = HOME_HOME_FRAG)
-class HomeFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        return view
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_home
     }
 }
