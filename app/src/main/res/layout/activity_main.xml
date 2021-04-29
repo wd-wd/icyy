@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data class="TestDataBinding">
 
-        <variable
-            name="test"
-            type="com.lanxiang.icyy.dto.TestDTO" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:clipChildren="false"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
-        <androidx.core.widget.NestedScrollView
+        <FrameLayout
+            android:id="@+id/home_container"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"></FrameLayout>
 
-            <TextView
-                android:id="@+id/tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{test.test}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.core.widget.NestedScrollView>
+        <RadioGroup
+            android:elevation="20dp"
+            android:id="@+id/radio_group_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp56"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bottom_tab_bar_shape">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="内部跳转"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="346dp" />
+            <com.lanxiang.icyy.tabbar.TabBarButton
+                android:id="@+id/radio_button_home"
+                style="@style/RadioGroupButtonStyle" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="组件跳转"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            tools:layout_editor_absoluteX="16dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.lanxiang.icyy.tabbar.TabBarButton
+                android:id="@+id/radio_button_category"
+                style="@style/RadioGroupButtonStyle" />
+
+            <com.lanxiang.icyy.tabbar.TabBarButton
+                android:id="@+id/radio_button_vip"
+                style="@style/RadioGroupButtonCenterStyle" />
+
+            <com.lanxiang.icyy.tabbar.TabBarButton
+                android:id="@+id/radio_button_cart"
+                style="@style/RadioGroupButtonStyle" />
+
+            <com.lanxiang.icyy.tabbar.TabBarButton
+                android:id="@+id/radio_button_profile"
+                style="@style/RadioGroupButtonStyle" />
+        </RadioGroup>
+
+    </LinearLayout>
 </layout>

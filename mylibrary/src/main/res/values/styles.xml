@@ -7,4 +7,5 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <dimen name="dp80">80dp</dimen>
 </resources>

@@ -5,4 +5,5 @@
     <dimen name="main_navigation_bottom_icon_height">50dp</dimen>
     <dimen name="main_navigation_bottom_big_icon_height">70dp</dimen>
     <dimen name="main_navigation_bottom_item_red_point">9dp</dimen>
+    <dimen name="dp56">56dp</dimen>
 </resources>
