@@ -1,4 +1,4 @@
-package com.lanxiang.icyy.base
+package com.lanxiang.comlib.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

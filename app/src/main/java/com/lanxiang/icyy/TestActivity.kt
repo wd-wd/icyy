@@ -1,8 +1,7 @@
 package com.lanxiang.icyy
 
-import androidx.databinding.ViewDataBinding
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.lanxiang.icyy.base.BaseActivity
+import com.lanxiang.comlib.base.BaseActivity
 import com.lanxiang.icyy.databinding.TestA
 
 /**

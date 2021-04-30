@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lanxiang.comlib.Const
-import com.lanxiang.icyy.base.BaseActivity
+import com.lanxiang.comlib.base.BaseActivity
 import com.lanxiang.icyy.databinding.TestDataBinding
 import com.lanxiang.module_home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
