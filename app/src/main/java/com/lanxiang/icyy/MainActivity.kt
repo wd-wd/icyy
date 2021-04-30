@@ -46,14 +46,14 @@ class MainActivity : BaseActivity<TestDataBinding>() {
     private fun showDefaultTab() {
         radio_button_home.setState(getString(R.string.ui_main_home),
             R.drawable.main_bottom_tab_home_focus, R.drawable.main_bottom_tab_home_normal)
-        radio_button_category.setState(getString(R.string.ui_main_home),
+        radio_button_category.setState(getString(R.string.ui_main_news),
             R.drawable.main_bottom_tab_category_focus, R.drawable.main_bottom_tab_category_normal)
-        radio_button_vip.setState(getString(R.string.ui_main_home),
+        radio_button_vip.setState(getString(R.string.ui_main_friends),
             R.drawable.main_bottom_tab_vip_large_focus, R.drawable.main_bottom_tab_vip_large_normal)
-        radio_button_cart.setState(getString(R.string.ui_main_home),
+        radio_button_cart.setState(getString(R.string.ui_main_find),
             R.drawable.main_bottom_tab_cart_focus, R.drawable.main_bottom_tab_cart_normal)
         radio_button_cart.stateController.setNum(null)
-        radio_button_profile.setState(getString(R.string.ui_main_home),
+        radio_button_profile.setState(getString(R.string.ui_main_my),
             R.drawable.main_bottom_tab_personal_focus, R.drawable.main_bottom_tab_personal_normal)
     }
     private fun findFragment(index: Int): Fragment? {
