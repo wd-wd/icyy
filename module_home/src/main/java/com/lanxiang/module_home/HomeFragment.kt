@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.lanxiang.comlib.Const.Home.HOME_HOME_FRAG
 import com.lanxiang.comlib.base.BaseFragment
 import com.lanxiang.module_home.databinding.FragmentHomeBinding
@@ -18,14 +19,23 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 @Route(path = HOME_HOME_FRAG)
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-    private val homeAdapter:HomeAdapter= HomeAdapter()
-    private val homeVM:HomeVM by viewModels()
+    private val homeAdapter: HomeAdapter = HomeAdapter()
+    private val homeVM: HomeVM by viewModels()
     override fun initView() {
         homeRv.layoutManager = LinearLayoutManager(context)
-        homeRv.adapter =homeAdapter
+        homeRv.adapter = homeAdapter
     }
+
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
+    }
+
+    override fun initEven() {
+        homeAdapter.setOnItemClickListener { _, view, position ->
+            ARouter.getInstance().build("/detail/detail")
+                .withString("position", position.toString())
+                .navigation()
+        }
     }
 
     override fun doDataChange() {

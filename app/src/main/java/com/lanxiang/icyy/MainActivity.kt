@@ -1,9 +1,7 @@
 package com.lanxiang.icyy
 
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lanxiang.comlib.Const
 import com.lanxiang.icyy.base.BaseActivity
