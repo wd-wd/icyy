@@ -1,6 +1,7 @@
 package com.lanxiang.comlib
 
 import android.app.Application
+import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 
 /**
@@ -10,12 +11,18 @@ import com.alibaba.android.arouter.launcher.ARouter
  * @desc:
  *
  */
-open class BaseApplication:Application() {
-    val instance: Application by lazy {
-        this
+open class BaseApplication : Application() {
+
+    companion object {
+        private lateinit var context: Context
+        fun getInstance(): Context {
+            return context
+        }
     }
+
     override fun onCreate() {
         super.onCreate()
+        context = this
         //ARoute 初始化
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
@@ -23,6 +30,7 @@ open class BaseApplication:Application() {
         }
         ARouter.init(this)
     }
+
     override fun onTerminate() {
         super.onTerminate()
         ARouter.getInstance().destroy()

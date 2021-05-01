@@ -1,7 +1,5 @@
 package com.lanxiang.module_detail
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lanxiang.comlib.base.BaseActivity
 import com.lanxiang.module_detail.databinding.DetailBinding

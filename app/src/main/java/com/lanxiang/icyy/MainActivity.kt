@@ -4,8 +4,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lanxiang.comlib.Const
+import com.lanxiang.comlib.Const.Home.FIND_FRAG
 import com.lanxiang.comlib.base.BaseActivity
 import com.lanxiang.icyy.databinding.TestDataBinding
+import com.lanxiang.module_find.FindFragment
 import com.lanxiang.module_home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -22,7 +24,7 @@ class MainActivity : BaseActivity<TestDataBinding>() {
         val BFragment =
             ARouter.getInstance().build(Const.Home.HOME_HOME_FRAG).navigation() as HomeFragment
         val CFragment =
-            ARouter.getInstance().build(Const.Home.HOME_HOME_FRAG).navigation() as HomeFragment
+            ARouter.getInstance().build(FIND_FRAG).navigation() as FindFragment
         val DFragment =
             ARouter.getInstance().build(Const.Home.HOME_HOME_FRAG).navigation() as HomeFragment
         fragments.add(homeFragment)

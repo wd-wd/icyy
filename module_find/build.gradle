@@ -1,21 +1,25 @@
-apply plugin: 'com.android.application'
+if (rootProject.ext.isAlone) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 //阿里路由支持kotlin跳转使用与下面一起，每个module中必须
 apply plugin: 'kotlin-kapt'
-
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
-
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.lanxiang.icyy"
+        if (rootProject.ext.isAlone) {
+            applicationId "com.lanxiang.module_find"
+        }
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -23,7 +27,15 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    sourceSets {
+        main {
+            if(rootProject.ext.isAlone){
+                manifest.srcFile 'src/main/alone/AndroidManifest.xml'
+            } else{
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -45,19 +57,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':mylibrary')
     implementation project(path: ':netlibrary')
-    implementation project(path: ':module_find')
-    if (!rootProject.ext.isAlone){
-        implementation project(path: ':module_home')
-        implementation project(path: ':module_detail')
-    }
+    implementation project(path: ':mylibrary')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    //阿里路由 compiler使用,如果不需要kotlin跳转下面的可以不用，
+//阿里路由 compiler使用,如果不需要kotlin跳转下面的可以不用，
     // 要支持kotlin下面的必须每个module都这样写
     annotationProcessor rootProject.ext.dependencies.arouter_compiler
     kapt rootProject.ext.dependencies.arouter_compiler
-    
 }

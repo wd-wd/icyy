@@ -1,3 +1,4 @@
+include ':module_find'
 include ':module_detail'
 include ':module_home'
 include ':netlibrary'
