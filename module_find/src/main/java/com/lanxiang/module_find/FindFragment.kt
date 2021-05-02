@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.lanxiang.comlib.Const
 import com.lanxiang.comlib.Const.Home.FIND_FRAG
 import com.lanxiang.comlib.base.BaseFragment
@@ -21,19 +22,25 @@ import kotlinx.android.synthetic.main.fragment_find.*
 @Route(path = FIND_FRAG)
 class FindFragment : BaseFragment<FindFragmentBinding>() {
     private val findAdapter: FindAdapter = FindAdapter()
-    private val findVM:FindVM by viewModels()
+    private val findVM: FindVM by viewModels()
     override fun getLayoutId(): Int {
         return R.layout.fragment_find
     }
 
     override fun initView() {
-        Log.e("FindFragment","initView")
-        findRv.layoutManager = GridLayoutManager(context,2)
-        findRv.adapter =findAdapter
+        Log.e("FindFragment", "initView")
+        findRv.layoutManager = GridLayoutManager(context, 2)
+        findRv.adapter = findAdapter
+    }
+
+    override fun initEven() {
+        findAdapter.setOnItemClickListener { adapter, view, position ->
+            ARouter.getInstance().build("/player/player").navigation()
+        }
     }
 
     override fun doDataChange() {
-        Log.e("FindFragment","doDataChange")
+        Log.e("FindFragment", "doDataChange")
         findVM.getList()
         findVM.tikTokDTO.observe(this, Observer {
             findAdapter.setNewInstance(it)

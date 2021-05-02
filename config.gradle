@@ -1,7 +1,7 @@
 ext {
     //false:作为Lib组件存在， true:作为application存在
     //当为true的时候，目前我们的代码原因，是无法编译主工程的。
-    isAlone = true
+    isAlone = false
     libsVersion = [
             retrofit = '2.9.0',
             rxjava = "2.1.1",

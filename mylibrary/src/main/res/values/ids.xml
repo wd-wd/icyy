@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="triggerDelay"/>
+    <item type="id" name="triggerLastTime"/>
+
+    <item name="custom_full_id" type="id" />
+    <item name="custom_small_id" type="id" />
+</resources>
