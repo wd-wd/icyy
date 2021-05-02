@@ -2,12 +2,9 @@ package com.lanxiang.module_find
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.lanxiang.comlib.BaseApplication
-import com.lanxiang.comlib.DataUtils
-import com.lanxiang.netlibrary.coroutines.safeLaunch
 import java.io.InputStream
 import java.nio.charset.Charset
 

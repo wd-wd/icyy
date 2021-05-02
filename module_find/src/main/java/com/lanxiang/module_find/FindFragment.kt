@@ -1,5 +1,6 @@
 package com.lanxiang.module_find
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,11 +27,13 @@ class FindFragment : BaseFragment<FindFragmentBinding>() {
     }
 
     override fun initView() {
+        Log.e("FindFragment","initView")
         findRv.layoutManager = GridLayoutManager(context,2)
         findRv.adapter =findAdapter
     }
 
     override fun doDataChange() {
+        Log.e("FindFragment","doDataChange")
         findVM.getList()
         findVM.tikTokDTO.observe(this, Observer {
             findAdapter.setNewInstance(it)
