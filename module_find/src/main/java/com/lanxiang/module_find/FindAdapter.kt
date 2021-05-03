@@ -3,6 +3,7 @@ package com.lanxiang.module_find
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.lanxiang.comlib.TilTokDTO
 
 /**
  * @auhthor: wangdong

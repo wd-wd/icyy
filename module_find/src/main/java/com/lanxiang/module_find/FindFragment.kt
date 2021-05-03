@@ -35,7 +35,9 @@ class FindFragment : BaseFragment<FindFragmentBinding>() {
 
     override fun initEven() {
         findAdapter.setOnItemClickListener { adapter, view, position ->
-            ARouter.getInstance().build("/player/player").navigation()
+            ARouter.getInstance().build("/player/player")
+                .withInt("currentPosition", position)
+                .navigation()
         }
     }
 

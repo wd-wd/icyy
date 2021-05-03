@@ -1,4 +1,4 @@
-package com.lanxiang.module_find
+package com.lanxiang.module_detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,18 +12,18 @@ import java.nio.charset.Charset
 /**
  * @auhthor: wangdong
  * @e-mail: 690931210@qq.com
- * @date: 2021/5/1 11:57 AM
+ * @date: 2021/5/3 9:49 AM
  * @desc:
  *
  */
-class FindVM : ViewModel() {
+class PlayerVM : ViewModel() {
     val tikTokDTO: MutableLiveData<MutableList<TilTokDTO>> by lazy { MutableLiveData<MutableList<TilTokDTO>>() }
     fun getList() {
         tikTokDTO.postValue(convertData())
 
     }
 
-    private  fun convertData(): MutableList<TilTokDTO>? {
+    private fun convertData(): MutableList<TilTokDTO>? {
         val `is`: InputStream = BaseApplication.getInstance().assets.open("tiktok_data")
         val length = `is`.available()
         val buffer = ByteArray(length)
