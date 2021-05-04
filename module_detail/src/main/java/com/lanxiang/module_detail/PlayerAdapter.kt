@@ -20,7 +20,6 @@ class PlayerAdapter : BaseQuickAdapter<TilTokDTO, BaseViewHolder>(R.layout.item_
         val player = holder.getView<CyyPlayer>(R.id.player)
         Glide.with(context).load(item.videoDownloadUrl)
             .into(player.coverImage)
-//        videoView.loadCoverImage(item?.url)
         GSYVideoHelper.GSYVideoHelperBuilder()
             .setIsTouchWiget(false)
             .setRotateViewAuto(false)
@@ -33,5 +32,6 @@ class PlayerAdapter : BaseQuickAdapter<TilTokDTO, BaseViewHolder>(R.layout.item_
             .setPlayPosition(holder.adapterPosition)
             .build(player)
         player.setUp(item.videoDownloadUrl, true, "")
+        holder.setText(R.id.videoDes,item.title)
     }
 }

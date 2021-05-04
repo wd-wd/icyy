@@ -44,7 +44,6 @@ class PlayerActivity : BaseActivity<PlayerDataBinding>() {
         playerRv.post {
             playerRv.scrollToPosition(index)
         }
-//        playerRv.smoothScrollToPosition(index)
     }
 
     override fun initEven() {
