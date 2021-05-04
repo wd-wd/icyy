@@ -1,6 +1,6 @@
 package com.lanxiang.icyy.api
 
-import com.lanxiang.module_home.dto.HomeRecommendDTO
+import com.lanxiang.module_home.dto.HomeFeedDTO
 import retrofit2.http.GET
 
 /**
@@ -11,6 +11,12 @@ import retrofit2.http.GET
  *
  */
 interface HomeServer {
-    @GET("/api/v5/index/tab/allRec")
-    suspend fun getRecommendList(): HomeRecommendDTO
+    /**
+     * 推荐
+     */
+//    @GET("/api/v5/index/tab/allRec")
+//    suspend fun getRecommendList(): HomeRecommendDTO
+
+    @GET("/api/v5/index/tab/feed")
+    suspend fun getFeedList():HomeFeedDTO
 }

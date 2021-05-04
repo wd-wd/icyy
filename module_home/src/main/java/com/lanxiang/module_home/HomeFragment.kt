@@ -41,7 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun doDataChange() {
         homeVM.getList()
         homeVM.homeRecommendDTO.observe(this, Observer {
-            homeAdapter.setNewInstance(it.itemList)
+            homeAdapter.setNewInstance(it)
         })
     }
 
