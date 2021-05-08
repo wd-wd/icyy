@@ -4,6 +4,7 @@ import com.lanxiang.comlib.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -68,11 +69,7 @@ class RetrofitManager private constructor() {
                 val token: String = ""
 
                 // get new request, add request header
-
-                // get new request, add request header
                 val builder = originalRequest.newBuilder()
-                //取消长链接
-//              builder.header("Connection", "close")
                 //取消长链接
 //              builder.header("Connection", "close")
                 if (null != token && !token.isEmpty()) {
@@ -84,17 +81,17 @@ class RetrofitManager private constructor() {
         //设置http 日志拦截
         if (BuildConfig.DEBUG) {
             //使用统一日志管理
+            val httpLogging = HttpLoggingInterceptor { message ->
+                try {
 
-            //使用统一日志管理
-//            val httpLogging = HttpLoggingInterceptor { message ->
-//                try {
-//
-//                } catch (e: IllegalArgumentException) {
-//                } catch (e: Exception) {
-//                }
-//            }
-//            httpLogging.setLevel(HttpLoggingInterceptor.Level.BODY)
-//            builder.addNetworkInterceptor(httpLogging)
+                } catch (e: IllegalArgumentException) {
+
+                } catch (e: Exception) {
+                    
+                }
+            }
+            httpLogging.setLevel(HttpLoggingInterceptor.Level.BODY)
+            builder.addNetworkInterceptor(httpLogging)
 //            builder.addNetworkInterceptor(StethoInterceptor())
         }
         return builder.build()

@@ -23,8 +23,9 @@ class HomeVM : ViewModel() {
     fun getList() {
         viewModelScope.safeLaunch {
             tryBlock {
-                val data = service.getFeedList()
-                homeRecommendDTO.postValue(convert(data))
+               val homeList = this@HomeVM.getHomeList()
+//                val data = service.getFeedList()
+                homeRecommendDTO.postValue(convert(homeList))
             }
             catchError {
 

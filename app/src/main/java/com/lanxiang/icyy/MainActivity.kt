@@ -1,5 +1,6 @@
 package com.lanxiang.icyy
 
+import android.view.MotionEvent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.launcher.ARouter
@@ -129,4 +130,7 @@ class MainActivity : BaseActivity<TestDataBinding>() {
 
     }
 
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return super.onTouchEvent(event)
+    }
 }
