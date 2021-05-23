@@ -7,14 +7,35 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.lanxiang.comlib.MyS
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/homeRv"
+        <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--   解决RecyclerView显示不全问题android:descendantFocusability="blocksDescendants"
+            我这样写的目的是想说明一下嵌套滑动冲突想解决并不提倡嵌套，因为这样RecyclerView的复用没了
+            -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/homeRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintTop_toBottomOf="@id/homeRv" />
+        </LinearLayout>
+
+    </com.lanxiang.comlib.MyS>
 </layout>
