@@ -3,12 +3,10 @@ package com.lanxiang.module_home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.lanxiang.icyy.api.HomeServer
 import com.lanxiang.module_home.dto.HomeFeedDTO
+import com.lanxiang.module_home.model.HomeModel
 import com.lanxiang.module_home.vo.FeedVO
-import com.lanxiang.netlibrary.ApiServiceProvider
 import com.lanxiang.netlibrary.coroutines.safeLaunch
-import com.lanxiang.netlibrary.getApiService
 
 /**
  * @auhthor: wangdong
@@ -18,12 +16,12 @@ import com.lanxiang.netlibrary.getApiService
  *
  */
 class HomeVM : ViewModel() {
-    private val service = ApiServiceProvider.getApiService<HomeServer>()
+    private val homeModel: HomeModel by lazy { HomeModel() }
     val homeRecommendDTO: MutableLiveData<MutableList<FeedVO>> by lazy { MutableLiveData<MutableList<FeedVO>>() }
     fun getList() {
         viewModelScope.safeLaunch {
             tryBlock {
-               val homeList = this@HomeVM.getHomeList()
+                val homeList = homeModel.loadData()
 //                val data = service.getFeedList()
                 homeRecommendDTO.postValue(convert(homeList))
             }

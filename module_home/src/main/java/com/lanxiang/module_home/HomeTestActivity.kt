@@ -1,9 +1,12 @@
 package com.lanxiang.module_home
 
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lanxiang.comlib.Const
+import kotlinx.android.synthetic.main.activity_home_test.*
 
 /**
  * @auhthor: wangdong
@@ -17,5 +20,11 @@ class HomeTestActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_test)
+        textTv.setOnClickListener {
+
+        }
+        textTv.setOnTouchListener { v, event ->
+            textTv.performClick()
+            true }
     }
 }
