@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lanxiang.comlib.Const
 import com.lanxiang.comlib.Const.Home.FIND_FRAG
+import com.lanxiang.comlib.MMKVUtils
 import com.lanxiang.comlib.base.BaseActivity
 import com.lanxiang.icyy.databinding.TestDataBinding
 import com.lanxiang.module_find.FindFragment
@@ -17,10 +18,11 @@ class MainActivity : BaseActivity<TestDataBinding>() {
     private var manager: FragmentManager? = null
     override fun getLayoutId(): Int = R.layout.activity_main
     override fun initView() {
+        MMKVUtils.encode("mmkvTest","dong")//测试写入
         showDefaultTab()
         val homeFragment =
             ARouter.getInstance().build(Const.Home.HOME_HOME_FRAG).navigation() as HomeFragment
-        val  AFragment =
+        val AFragment =
             ARouter.getInstance().build(Const.Home.HOME_HOME_FRAG).navigation() as HomeFragment
         val BFragment =
             ARouter.getInstance().build(Const.Home.HOME_HOME_FRAG).navigation() as HomeFragment
@@ -42,21 +44,37 @@ class MainActivity : BaseActivity<TestDataBinding>() {
         if (!homeFragment!!.isAdded) {
             ft.add(R.id.home_container, homeFragment!!, 0.toString()).commitAllowingStateLoss()
         }
+        setIndexSelected(0)
+    }
 
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
     }
+
     private fun showDefaultTab() {
-        radio_button_home.setState(getString(R.string.ui_main_home),
-            R.drawable.main_bottom_tab_home_focus, R.drawable.main_bottom_tab_home_normal)
-        radio_button_category.setState(getString(R.string.ui_main_news),
-            R.drawable.main_bottom_tab_category_focus, R.drawable.main_bottom_tab_category_normal)
-        radio_button_vip.setState(getString(R.string.ui_main_friends),
-            R.drawable.main_bottom_tab_vip_large_focus, R.drawable.main_bottom_tab_vip_large_normal)
-        radio_button_cart.setState(getString(R.string.ui_main_find),
-            R.drawable.main_bottom_tab_cart_focus, R.drawable.main_bottom_tab_cart_normal)
+        radio_button_home.setState(
+            getString(R.string.ui_main_home),
+            R.drawable.main_bottom_tab_home_focus, R.drawable.main_bottom_tab_home_normal
+        )
+        radio_button_category.setState(
+            getString(R.string.ui_main_news),
+            R.drawable.main_bottom_tab_category_focus, R.drawable.main_bottom_tab_category_normal
+        )
+        radio_button_vip.setState(
+            getString(R.string.ui_main_friends),
+            R.drawable.main_bottom_tab_vip_large_focus, R.drawable.main_bottom_tab_vip_large_normal
+        )
+        radio_button_cart.setState(
+            getString(R.string.ui_main_find),
+            R.drawable.main_bottom_tab_cart_focus, R.drawable.main_bottom_tab_cart_normal
+        )
         radio_button_cart.stateController.setNum(null)
-        radio_button_profile.setState(getString(R.string.ui_main_my),
-            R.drawable.main_bottom_tab_personal_focus, R.drawable.main_bottom_tab_personal_normal)
+        radio_button_profile.setState(
+            getString(R.string.ui_main_my),
+            R.drawable.main_bottom_tab_personal_focus, R.drawable.main_bottom_tab_personal_normal
+        )
     }
+
     private fun findFragment(index: Int): Fragment? {
         var fragment = supportFragmentManager.findFragmentByTag(index.toString())
         return if (fragment == null) {

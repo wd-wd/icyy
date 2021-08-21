@@ -3,6 +3,7 @@ package com.lanxiang.comlib
 import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.mmkv.MMKV
 
 /**
  * @auhthor: wangdong
@@ -29,6 +30,7 @@ open class BaseApplication : Application() {
             ARouter.openDebug()
         }
         ARouter.init(this)
+        MMKV.initialize(this)
     }
 
     override fun onTerminate() {
